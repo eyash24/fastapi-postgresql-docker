@@ -1,0 +1,13 @@
+docker run --name fastapi-postgres -e POSTGRES_PASSWORD=<password>-d -p 5432:80 postgres:alpine
+ 1015  docker run --name fastapi-postgres -e POSTGRES_PASSWORD=<password>-d -p 5432:80 postgres:alpine
+ 1016  docker run --name fastapi-postgres -e POSTGRES_PASSWORD=<password>-d -p 5432:5433 postgres:alpine
+ 1017  docker run --name fastapi-postgres -e POSTGRES_PASSWORD=<password>-d -p 5432:5433 postgres:alpine
+ 1018  cls
+ 1019  cleat
+ 1020  clear
+ 1021  docker rm fastapi-postgres
+ 1022  docker ps
+ 1023  docker run --name fastapi-postgres -e POSTGRES_PASSWORD=<password>-d -p 5433:5432 postgres:alpine
+ 1024  docker ps
+ 1025  docker exec -it fastapi-postgres
+ 1026  docker exec -it fastapi-postgres bash
