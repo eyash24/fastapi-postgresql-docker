@@ -32,7 +32,7 @@ async def get_all_contacts(db:"Session") -> List[_schema.Contact]:
     contacts = db.query(_models.Contact).all()
     return [_schema.Contact.model_validate(contact) for contact in contacts]
 
-async def get_contact(contact_id: int, db:"Session", options=0) -> _schema.Contact:
+async def get_contact(contact_id: int, db:"Session") -> _schema.Contact:
     # options: 0 -> return pydantic object
     # options: 1 -> returns orm object 
     contact = db.query(_models.Contact).filter(_models.Contact.id == contact_id).first()
@@ -40,12 +40,23 @@ async def get_contact(contact_id: int, db:"Session", options=0) -> _schema.Conta
     if not contact:
         return None
 
-    # if options == 1:
-    #     return contact
-    # return _schema.Contact.model_validate(contact)
     return contact
-
 
 async def delete_contact(contact: _models.Contact,db:"Session"):
     db.delete(contact)
     db.commit()
+
+async def update_contact(
+        contact_data: _schema.CreateContact,
+        contact: _models.Contact,
+        db: "Session"
+) -> _schema.Contact:
+    contact.first_name = contact_data.first_name
+    contact.last_name = contact_data.last_name
+    contact.email = contact_data.email
+    contact.phone_number = contact_data.phone_number
+
+    db.commit()
+    db.refresh(contact)
+
+    return _schema.Contact.model_validate(contact)
