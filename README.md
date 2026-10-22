@@ -1,11 +1,9 @@
 # FastAPI - Postgresql
 
-## Reference
-- [Fastapi with Postgresql and docker](https://youtu.be/2X8B_X2c27Q?si=-DK9d-alqjZjvTAm)
-
+## AIM
+- Learn about connecting FastAPI with postgres on Docker
 
 ## Setup
-
 ### 1. Docker Setup
 
 Pull the PostgreSQL Alpine image:
@@ -104,3 +102,6 @@ DROP TABLE test_table;
 
 If both statements execute successfully, the database connection and schema permissions are configured correctly.
 
+
+## Reference
+- [Fastapi with Postgresql and docker](https://youtu.be/2X8B_X2c27Q?si=-DK9d-alqjZjvTAm)
